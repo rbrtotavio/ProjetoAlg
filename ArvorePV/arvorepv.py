@@ -474,25 +474,42 @@ Segue aqui a orientação:
 'node.cor = 'Black'' => a cor da raiz sempre é preta, então esse ponteiro sempre aponta para a cor 'Black'
 
 A partir de agora serão descritas as funções que constroem, destroem e processam certas particularidades na árvore,
-algumas dessas funções não foram retiradas do livro do cormem mas do canal "Programação Dinâmica" (https://www.youtube.com/channel/UC70mr11REaCqgKke7DPJoLg) e "MichaelSambol" (https://www.youtube.com/user/mikeysambol).
+algumas dessas funções não foram retiradas do livro do cormem mas do canal "Programação Dinâmica" (https://www.youtube.com/channel/UC70mr11REaCqgKke7DPJoLg) 
+e "MichaelSambol" (https://www.youtube.com/user/mikeysambol).
 
 A primeira função em ordem crescente das linhas de código é Inorder_Tree_Walk() que recebe a raiz da árvore e exibe
 na tela os nós em ordem, a função em questão foi adaptada para não só exibir o valor dos nós mas também sua cor.
 Nesta função percorrer uma árvore de n nós demora o tempo Q(n) e custa O(n).
 
 A função seguinte é Tree_Search() que recebe a raiz da árvore e um valor que será procurado na árvore, e retornará o
-nó que contém um valor igual ao valor inserido ná função. O procedimento começa sua busca na raiz e traça um caminho simples descendo a árvore, para cada nó x que encontra, ele compara a chave k com a x.chave. Se as duas chaves são iguais, a busca termina. O caso nó programa é uma função iterativa, está função terá tempo de execução = O(h) sendo h a altura da árvore em questão.
+nó que contém um valor igual ao valor inserido ná função. O procedimento começa sua busca na raiz e traça um caminho 
+simples descendo a árvore, para cada nó x que encontra, ele compara a chave k com a x.chave. Se as duas chaves são iguais, 
+a busca termina. O caso nó programa é uma função iterativa, está função terá tempo de execução = O(h) sendo h a altura da árvore em questão.
 
 As duas funções seguintes são Tree_Maximum() e Tree_Minimum() estás funções percorrem a árvore em busca dos vértices
-de maior ou menor valor, respectivamente, nesta árvore em questão. Ambos os procedimentos são executados no tempo O(h) em uma árvore de altura h já que, como em Tree_Search(), a sequência de nós encontrados forma um caminho simples descendente partindo da raiz.
+de maior ou menor valor, respectivamente, nesta árvore em questão. Ambos os procedimentos são executados no tempo O(h) 
+em uma árvore de altura h já que, como em Tree_Search(), a sequência de nós encontrados forma um caminho simples descendente partindo da raiz.
 
 As duas funções seguintes são Tree_Successor() e Tree_Predecessor() essas funções procuram e retornam um nó sucessor
-(ou predecessor) imediato de um outro nó que for passado por estas função.O tempo de execução de Tree_Successor em uma árvore de altura h é O(h), já que seguimos um caminho simples para cima na árvore ou, então, um caminho simples para baixo na árvore. O procedimento Tree_Predecessor(), que é simétrico de Tree_Successor(), também é executado no tempo O(h).
+(ou predecessor) imediato de um outro nó que for passado por estas função.O tempo de execução de Tree_Successor em uma 
+árvore de altura h é O(h), já que seguimos um caminho simples para cima na árvore ou, então, um caminho simples para baixo na 
+árvore. O procedimento Tree_Predecessor(), que é simétrico de Tree_Successor(), também é executado no tempo O(h).
 
-As proximas duas funções são partes das rotações, esses processos são importantes para o processo de balanceamento da estrutura de dados da classe árvore. As operações de árvores de busca RB_Insert() e RB_Delete, quando executadas em uma árvore vermelho-preto com n chaves, demoram o tempo O(lg n). Como elas modificam a árvore, o resultado pode violar as propriedades vermelho-preto portanto usamos as rotações para garantir o balanceamento e estas propriedades
-Quando fazemos uma rotação para a esquerda em um nó x, supomos que seu filho à direita y não é T.nil; x pode ser qualquer nó na árvore cujo filho à direita não é T.nil. A rotação para a esquerda “pivota” ao redor da ligação de x para y. Transforma y na nova raiz da subárvore, com x como filho à esquerda de y e o filho à esquerda de y como filho à direita de x. Left_Rotate() e Right_Rotate são executados no tempo O(1). Somente ponteiros são alterados por uma rotação; todos os outros atributos em um nó permanecem os mesmos. Foi usado o vídeo "Red-black trees in 3 minutes - Rotations" (https://www.youtube.com/watch?v=95s3ndZRGbk) para descrever a lógica das rotações.
+As proximas duas funções são partes das rotações, esses processos são importantes para o processo de balanceamento da 
+estrutura de dados da classe árvore. As operações de árvores de busca RB_Insert() e RB_Delete, quando executadas em uma 
+árvore vermelho-preto com n chaves, demoram o tempo O(lg n). Como elas modificam a árvore, o resultado pode violar as propriedades 
+vermelho-preto portanto usamos as rotações para garantir o balanceamento e estas propriedades
+Quando fazemos uma rotação para a esquerda em um nó x, supomos que seu filho à direita y não é T.nil; x pode ser qualquer nó na 
+árvore cujo filho à direita não é T.nil. A rotação para a esquerda “pivota” ao redor da ligação de x para y. Transforma y na nova 
+raiz da subárvore, com x como filho à esquerda de y e o filho à esquerda de y como filho à direita de x. Left_Rotate() e Right_Rotate são executados no tempo O(1). 
+Somente ponteiros são alterados por uma rotação; todos os outros atributos em um nó permanecem os mesmos. 
+Foi usado o vídeo "Red-black trees in 3 minutes - Rotations" (https://www.youtube.com/watch?v=95s3ndZRGbk) para descrever a lógica das rotações.
 
-As Proximas cinco funções fazem parte dos processos de Inserção e Eliminação. As primeiras duas funções deste grupo são RB_Insert() e RB_Insert_Fixup() que pretendem inserir um nó em uma árvore e, no processo de inserção, consertar a árvore para as propriedades das árvores vermelha e preta. Podemos inserir um nó em uma árvore vermelho-preto de n nós no tempo O(lg n). para inserir o nó z na árvore T como se ela fosse uma árvore de busca binária comum e depois colorimos z de vermelho, usamos a cor vermelha porque sabemos que devemos respeitar as seguintes propriedades das árvores vermelha e preta:
+As Proximas cinco funções fazem parte dos processos de Inserção e Eliminação. As primeiras duas funções deste grupo são RB_Insert() 
+e RB_Insert_Fixup() que pretendem inserir um nó em uma árvore e, no processo de inserção, consertar a árvore para as propriedades das 
+árvores vermelha e preta. Podemos inserir um nó em uma árvore vermelho-preto de n nós no tempo O(lg n). para inserir o nó z na árvore T como se 
+ela fosse uma árvore de busca binária comum e depois colorimos z de vermelho, usamos a cor vermelha porque sabemos que devemos respeitar as 
+seguintes propriedades das árvores vermelha e preta:
 
 ////1. Um nó é vermelho ou preto.
     2. A raiz e folhas(NIL) são pretas.
@@ -501,8 +518,11 @@ As Proximas cinco funções fazem parte dos processos de Inserção e Eliminaç�
 
 Ao inserir um nó vermelho podemos violar a propriedade 2 e 3 mas através do RB_Insert_Fixup() podemos facilmente consertar essas violações.
 
-O mesmo acontece ao deletar um nó, alguma propriedade da arvore pode ser violada por isso usa-se metodos de RB_Transplant() e RB_Delete_Fixup() para não haver nenhuma violação. Como as outras operações básicas em uma árvore vermelho-preto de n nós, a eliminação de um nó demora o
+O mesmo acontece ao deletar um nó, alguma propriedade da arvore pode ser violada por isso usa-se metodos de RB_Transplant() 
+e RB_Delete_Fixup() para não haver nenhuma violação. Como as outras operações básicas em uma árvore vermelho-preto de n nós, a eliminação de um nó demora o
 tempo O(lg n).
 
-Lógo após as definições das funções temos os menus e o dicionário idlist, que permite através de um número de identificação permite que o usuário faça alterações em múltiplas árvores.
-Ao ser identificado um número de identificação o dicionário irá salvar em seus valores a árvore que aquele número representa e também retornará a arvore sempre que for chamado para fazer alguma alteração."""
+Lógo após as definições das funções temos os menus e o dicionário idlist, que permite através de um número de identificação 
+permite que o usuário faça alterações em múltiplas árvores.
+Ao ser identificado um número de identificação o dicionário irá salvar em seus valores a árvore que aquele número representa 
+e também retornará a arvore sempre que for chamado para fazer alguma alteração."""
